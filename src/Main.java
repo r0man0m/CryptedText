@@ -18,8 +18,8 @@ public class Main {
             choice = scanner.nextInt();
             Encryption object;
             String encryptionText;
-            Path encryptPath = Path.of("C:\\Users\\Roman\\IdeaProjects\\ProjectCriptoText\\EncryptionText.txt");
-            Path pathDict = Path.of("C:\\Users\\Roman\\IdeaProjects\\ProjectCriptoText\\dictionary.txt");
+            Path encryptPath = Path.of("C:\\Users\\Roman\\IdeaProjects\\CryptedText\\EncryptionText.txt");
+            Path pathDict = Path.of("C:\\Users\\Roman\\IdeaProjects\\CryptedText\\dictionary.txt");
             switch (choice) {
                 case 1:
                     Files.delete(encryptPath);
