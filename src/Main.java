@@ -80,8 +80,6 @@ public class Main {
                     Scanner scanner2 = new Scanner(System.in);
                     String firstLetterString = scanner2.nextLine();
                     System.out.println("Enter the path to encrypted file");
-                    Scanner scanner3 = new Scanner(System.in);
-                    String pathToEncrypt = scanner3.nextLine();
                     int ok = 0;
                     while (ok == 0) {
                         BruteForce bruteForce = new BruteForce();
