@@ -72,8 +72,8 @@ public class Main {
                     Scanner scanner3 = new Scanner(System.in);
                     String pathToEncrypt = scanner3.nextLine();
                     Path path1 = Path.of(pathToEncrypt);
-                    int ok = 0;
-                    while (ok == 0) {
+                    int ok = 1;
+                    while (ok == 1) {
                         BruteForce bruteForce = new BruteForce();
                         System.out.println("Wait please...");
                         bruteForce.force(Files.readString(path1), start, key, size, pathDict, firstLetterString.charAt(0));
