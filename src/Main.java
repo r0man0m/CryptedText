@@ -80,12 +80,14 @@ public class Main {
                     Scanner scanner2 = new Scanner(System.in);
                     String firstLetterString = scanner2.nextLine();
                     System.out.println("Enter the path to encrypted file");
+                    Scanner scanner3 = new Scanner(System.in);
+                    String pathToEncrypt = scanner3.nextLine();
+                    Path path1 = Path.of(pathToEncrypt);
                     int ok = 0;
                     while (ok == 0) {
                         BruteForce bruteForce = new BruteForce();
                         System.out.println("Wait please...");
-                        bruteForce.force(Files.readString(encryptPath), start, key, size, pathDict, firstLetterString.charAt(0));
-
+                        bruteForce.force(Files.readString(path1), start, key, size, pathDict, firstLetterString.charAt(0));
                         System.out.println("Everything is OK ?");
                         System.out.println("If the text is not accurate enter 0, else enter 1");
                         start = bruteForce.returnKey() + 1;
