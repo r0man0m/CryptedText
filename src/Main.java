@@ -27,12 +27,14 @@ public class Main {
                     wrong = false;
                 } catch (InputMismatchException ex1) {
                     System.out.println("You must enter the number");
-                    //wrong = true;
                 }
             }
             Encryption object;
             String encryptionText;
             switch (choice) {
+                case 0:
+                    System.out.println("Exit");
+                    break;
                 case 1:
                     Files.delete(keyPath);
                     Files.createFile(keyPath);
@@ -57,11 +59,9 @@ public class Main {
                             System.out.println(encryptionText);
                             wrong = false;
                         } catch (InputMismatchException ex2) {
-                            System.out.println("You must enter the right path to the text, or the key us a number");
-                            wrong = true;
+                            System.out.println("You must enter the key us a number");
                         }catch (NoSuchFileException n) {
                             System.out.println("Wrong path to the file");
-                            wrong = true;
                         }
                     }
                     break;
@@ -76,8 +76,6 @@ public class Main {
                                 String StringPathEncrypt = scanner3.nextLine();
                                 Path path1 = Path.of(StringPathEncrypt);
                                 int key3 = Integer.parseInt(Files.readString(keyPath));
-                                /*System.out.println();
-                                System.out.println("Decryption text");*/
                                 System.out.println();
                                 object = new Encryption(key3);
                                 System.out.println(object.decryptionMethod(Files.readString(path1)));
@@ -111,7 +109,6 @@ public class Main {
                             Scanner scanner5 = new Scanner(System.in);
                             String firstLetterString = scanner5.nextLine();
                             System.out.println("Enter the path to encrypted file");
-                            //Scanner scanner5 = new Scanner(System.in);
                             String pathToEncrypt = scanner5.nextLine();
                             Path path1 = Path.of(pathToEncrypt);
                             int ok = 1;
