@@ -8,6 +8,8 @@ public class Main {
     public static void main(String[] args) throws IOException {
         int choice = 1;
         int start = 0;
+        Path encryptPath = Path.of("C:\\Users\\Roman\\IdeaProjects\\CryptedText\\EncryptionText.txt");
+        Path pathDict = Path.of("C:\\Users\\Roman\\IdeaProjects\\CryptedText\\dictionary.txt");
         while ( choice != 0) {
             System.out.println("Select the program operation mode:");
             System.out.println("If you want to encrypt the file enter: 1");
@@ -18,8 +20,6 @@ public class Main {
             choice = scanner.nextInt();
             Encryption object;
             String encryptionText;
-            Path encryptPath = Path.of("C:\\Users\\Roman\\IdeaProjects\\CryptedText\\EncryptionText.txt");
-            Path pathDict = Path.of("C:\\Users\\Roman\\IdeaProjects\\CryptedText\\dictionary.txt");
             switch (choice) {
                 case 1:
                     Files.delete(encryptPath);
@@ -66,7 +66,7 @@ public class Main {
                             System.out.println(object.decryptionMethod(object.encryptionMethod(Files.readString(path2))));
                             Files.delete(encryptPath);
                             Files.createFile(encryptPath);
-                            Files.write(encryptPath,object.decryptionMethod(object.encryptionMethod(Files.readString(path2))).getBytes(StandardCharsets.UTF_8));
+                            Files.write(encryptPath,object.encryptionMethod(Files.readString(path2)).getBytes(StandardCharsets.UTF_8));
                             break;
                     }
                     break;
