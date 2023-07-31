@@ -12,7 +12,7 @@ public class Encryption {
             else if(word[i] >= 1072 && word[i] <= 1103) {
                 word[i] = (char) (module((word[i] - 1072 + key), 32) + 1072); // Small letter
             }
-            else if(word[i] > 32 && word[i] <= 46) {
+            else if(word[i] >= 32 && word[i] <= 46) {
                 word[i] = (char) (module((word[i] - 32 + key), 15) + 32); // Symbols
             }
 
@@ -28,7 +28,7 @@ public class Encryption {
             else if(word[i] >= 1072 && word[i] <= 1103) {
                 word[i] = (char) (module((word[i] - 1072 - key), 32) + 1072); // Small letter
             }
-            else if(word[i] > 32 && word[i] <= 46) {
+            else if(word[i] >= 32 && word[i] <= 46) {
                 word[i] = (char) (module((word[i] - 32 - key), 15) + 32); // Symbols
             }
 
