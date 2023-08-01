@@ -26,10 +26,7 @@ public class FrequencyAnalysis {
        }
        return hashMap;
    }
-   public static Integer getCounter(Path path) throws IOException{
-        Integer i = setMap(readFile(path)).get('Т');
-        return i;
-   }
+
 
     }
 
