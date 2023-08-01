@@ -36,6 +36,9 @@ public class Main {
                     System.out.println("Exit");
                     break;
                 case 1:
+                    if(Files.notExists(encryptPath)) {
+                        Files.createFile(encryptPath);
+                    }
                     Files.delete(keyPath);
                     Files.createFile(keyPath);
                     Files.delete(encryptPath);
@@ -67,9 +70,13 @@ public class Main {
                     break;
 
                 case 2:
+
                     wrong = true;
                     while (wrong) {
                         try {
+                            if(Files.notExists(encryptPath)){
+                                Files.createFile(encryptPath);
+                            }
                             if (Files.readString(encryptPath).length() != 0) {
                                 System.out.println("Enter the path to the encrypted text");
                                 Scanner scanner3 = new Scanner(System.in);
