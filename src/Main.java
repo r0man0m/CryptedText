@@ -14,11 +14,14 @@ public class Main {
         Path pathDict = Path.of("C:\\Users\\Roman\\IdeaProjects\\CryptedText\\dictionary.txt");
         Path keyPath = Path.of("C:\\Users\\Roman\\IdeaProjects\\CryptedText\\key.txt");
         while ( choice != 0) {
+            System.out.println();
             System.out.println("Select the program operation mode:");
+            System.out.println("-------------------------------------------------------");
             System.out.println("If you want to encrypt the file enter: 1");
             System.out.println("If you want to decrypt the file enter: 2");
             System.out.println("If you want to brute force decryption the file enter: 3");
             System.out.println("For exit enter: 0");
+            System.out.println("-------------------------------------------------------");
             boolean wrong = true;
             while (wrong) {
                 try {
@@ -36,6 +39,12 @@ public class Main {
                     System.out.println("Exit");
                     break;
                 case 1:
+                    if(Files.notExists(encryptPath)) {
+                        Files.createFile(encryptPath);
+                    }
+                    if(Files.notExists(keyPath)) {
+                        Files.createFile(keyPath);
+                    }
                     Files.delete(keyPath);
                     Files.createFile(keyPath);
                     Files.delete(encryptPath);
@@ -74,6 +83,11 @@ public class Main {
                             if(Files.notExists(encryptPath)){
                                 Files.createFile(encryptPath);
                             }
+                            if(Files.notExists(keyPath)) {
+                                System.out.println("File key.txt is not exist, you must encrypt the file before");
+                                System.out.println();
+                                break;
+                            }
                             if (Files.readString(encryptPath).length() != 0) {
                                 System.out.println("Enter the path to the encrypted text");
                                 Scanner scanner3 = new Scanner(System.in);
@@ -91,7 +105,7 @@ public class Main {
                             wrong = false;
 
                         }catch (NoSuchFileException n) {
-                            System.out.println("Wrong path to the file");
+                            System.out.println("Wrong path to the file or not exist key.txt");
                         }
                         catch (InputMismatchException ex3) {
                             System.out.println("You must enter right path to the encrypted text");
@@ -100,6 +114,10 @@ public class Main {
                     break;
 
                 case 3:
+                    if(Files.notExists(encryptPath) || Files.readString(encryptPath).length() == 0) {
+                        System.out.println("Encryption file is not exist or empty,  you must encrypt the file before");
+                        break;
+                    }
                     wrong = true;
                     while (wrong) {
                         try {
