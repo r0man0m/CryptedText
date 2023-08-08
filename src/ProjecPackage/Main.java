@@ -1,3 +1,8 @@
+package ProjecPackage;
+
+import ProjecPackage.BruteForce;
+import ProjecPackage.Encryption;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -60,7 +65,7 @@ public class Main {
                             Scanner scanner2 = new Scanner(System.in);
                             int decryptionkey = scanner2.nextInt();
                             object = new Encryption(decryptionkey);
-                            System.out.println("Encryption text");
+                            System.out.println("ProjecPackage.Encryption text");
                             System.out.println();
                             encryptionText = object.encryptionMethod(Files.readString(textPath));
                             Files.write(encryptPath, encryptionText.getBytes(StandardCharsets.UTF_8));
@@ -115,7 +120,7 @@ public class Main {
 
                 case 3:
                     if(Files.notExists(encryptPath) || Files.readString(encryptPath).length() == 0) {
-                        System.out.println("Encryption file is not exist or empty,  you must encrypt the file before");
+                        System.out.println("ProjecPackage.Encryption file is not exist or empty,  you must encrypt the file before");
                         break;
                     }
                     wrong = true;
