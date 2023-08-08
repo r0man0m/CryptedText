@@ -12,9 +12,9 @@ public class Main {
     public static void main(String[] args)throws IOException{
         int choice = 1;
         int start = 0;
-        Path encryptPath = Path.of("src/ProjectPackage/EncryptionText.txt");
+        Path encryptPath = Path.of("src/EncryptionText.txt");
         Path pathDict = Path.of("src/ProjectPackage/dictionary.txt");
-        Path keyPath = Path.of("src/ProjectPackage/key.txt");
+        Path keyPath = Path.of("src/key.txt");
         Scanner scanner = new Scanner(System.in);
         while ( choice != 0) {
             System.out.println();
@@ -47,10 +47,6 @@ public class Main {
                     if(Files.notExists(keyPath)) {
                         Files.createFile(keyPath);
                     }
-                    Files.delete(keyPath);
-                    Files.createFile(keyPath);
-                    Files.delete(encryptPath);
-                    Files.createFile(encryptPath);
                     wrong = true;
                     while (wrong) {
                         try {
@@ -61,7 +57,7 @@ public class Main {
                             System.out.println("Enter key");
                             int decryptionkey = scanner.nextInt();
                             object = new Encryption(decryptionkey);
-                            System.out.println("ProjectPackage.Encryption text");
+                            System.out.println("Encryption text");
                             System.out.println();
                             encryptionText = object.encryptionMethod(Files.readString(textPath));
                             Files.write(encryptPath, encryptionText.getBytes(StandardCharsets.UTF_8));
@@ -116,7 +112,7 @@ public class Main {
 
                 case 3:
                     if(Files.notExists(encryptPath) || Files.readString(encryptPath).length() == 0) {
-                        System.out.println("ProjecPackage.Encryption file is not exist or empty,  you must encrypt the file before");
+                        System.out.println("Encryption file is not exist or empty,  you must encrypt the file before");
                         break;
                     }
                     wrong = true;
@@ -131,7 +127,7 @@ public class Main {
                             scanner.nextLine();
                             String firstLetterString = scanner.nextLine();
                             System.out.println("Enter the path to encrypted file");
-                            scanner.nextLine();
+                            //scanner.nextLine();
                             String pathToEncrypt = scanner.nextLine();
                             Path path1 = Path.of(pathToEncrypt);
                             int ok = 1;
