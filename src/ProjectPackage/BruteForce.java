@@ -20,8 +20,8 @@ public class BruteForce {
             char first = firstLetter; // Set first letter
             for (int j = 0; j < sizeAlphabet; j++) {
                 ArrayList<String> listForNextLetter = dictionary.getDictionary(first); // Get list for next letter
-                for (int k = 0; k < decryptionText.length; k++) {
-                    if(listForNextLetter.contains(decryptionText[k])) { //Search contains every word of text in list of next letter
+                for (String s : decryptionText) {
+                    if (listForNextLetter.contains(s)) { //Search contains every word of text in list of next letter
                         count++; // if contains is exist, increment count
                     }
                 }
