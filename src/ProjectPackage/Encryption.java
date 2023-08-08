@@ -1,3 +1,5 @@
+package ProjectPackage;
+
 public class Encryption {
     private final int key;
     public Encryption(int key) {
