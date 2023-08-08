@@ -1,4 +1,4 @@
-package ProjecPackage;
+package ProjectPackage;
 
 public class Encryption {
     private final int key;

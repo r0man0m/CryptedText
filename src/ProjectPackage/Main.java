@@ -1,7 +1,4 @@
-package ProjecPackage;
-
-import ProjecPackage.BruteForce;
-import ProjecPackage.Encryption;
+package ProjectPackage;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -15,9 +12,10 @@ public class Main {
     public static void main(String[] args)throws IOException{
         int choice = 1;
         int start = 0;
-        Path encryptPath = Path.of("C:\\Users\\Roman\\IdeaProjects\\CryptedText\\EncryptionText.txt");
-        Path pathDict = Path.of("C:\\Users\\Roman\\IdeaProjects\\CryptedText\\dictionary.txt");
-        Path keyPath = Path.of("C:\\Users\\Roman\\IdeaProjects\\CryptedText\\key.txt");
+        Path encryptPath = Path.of("src/ProjectPackage/EncryptionText.txt");
+        Path pathDict = Path.of("src/ProjectPackage/dictionary.txt");
+        Path keyPath = Path.of("src/ProjectPackage/key.txt");
+        Scanner scanner = new Scanner(System.in);
         while ( choice != 0) {
             System.out.println();
             System.out.println("Select the program operation mode:");
@@ -30,7 +28,6 @@ public class Main {
             boolean wrong = true;
             while (wrong) {
                 try {
-                    Scanner scanner = new Scanner(System.in);
                     choice = scanner.nextInt();
                     wrong = false;
                 } catch (InputMismatchException ex1) {
@@ -58,14 +55,13 @@ public class Main {
                     while (wrong) {
                         try {
                             System.out.println("Enter the path to the text file");
-                            Scanner scanner1 = new Scanner(System.in);
-                            String path = scanner1.nextLine();
+                            scanner.nextLine();
+                            String path = scanner.nextLine();
                             Path textPath = Path.of(path);
                             System.out.println("Enter key");
-                            Scanner scanner2 = new Scanner(System.in);
-                            int decryptionkey = scanner2.nextInt();
+                            int decryptionkey = scanner.nextInt();
                             object = new Encryption(decryptionkey);
-                            System.out.println("ProjecPackage.Encryption text");
+                            System.out.println("ProjectPackage.Encryption text");
                             System.out.println();
                             encryptionText = object.encryptionMethod(Files.readString(textPath));
                             Files.write(encryptPath, encryptionText.getBytes(StandardCharsets.UTF_8));
@@ -95,8 +91,8 @@ public class Main {
                             }
                             if (Files.readString(encryptPath).length() != 0) {
                                 System.out.println("Enter the path to the encrypted text");
-                                Scanner scanner3 = new Scanner(System.in);
-                                String StringPathEncrypt = scanner3.nextLine();
+                                scanner.nextLine();
+                                String StringPathEncrypt = scanner.nextLine();
                                 Path path1 = Path.of(StringPathEncrypt);
                                 int key3 = Integer.parseInt(Files.readString(keyPath));
                                 System.out.println();
@@ -128,15 +124,15 @@ public class Main {
                         try {
                             System.out.println("Brute Force Method");
                             System.out.println("Enter maximum volume of key");
-                            Scanner scanner4 = new Scanner(System.in);
-                            int key = scanner4.nextInt();
+                            int key = scanner.nextInt();
                             System.out.println("Enter size of alphabet");
-                            int size = scanner4.nextInt();
+                            int size = scanner.nextInt();
                             System.out.println("Enter first letter of alphabet");
-                            Scanner scanner5 = new Scanner(System.in);
-                            String firstLetterString = scanner5.nextLine();
+                            scanner.nextLine();
+                            String firstLetterString = scanner.nextLine();
                             System.out.println("Enter the path to encrypted file");
-                            String pathToEncrypt = scanner5.nextLine();
+                            scanner.nextLine();
+                            String pathToEncrypt = scanner.nextLine();
                             Path path1 = Path.of(pathToEncrypt);
                             int ok = 1;
                             wrong = false;
@@ -146,8 +142,7 @@ public class Main {
                                 bruteForce.force(Files.readString(path1), start, key, size, pathDict, firstLetterString.charAt(0));
                                 System.out.println("Everything is OK ?");
                                 System.out.println("If the text is not accurate enter 1, else enter 0");
-                                Scanner scanner6 = new Scanner(System.in);
-                                ok = scanner6.nextInt();
+                                ok = scanner.nextInt();
                                 start = bruteForce.returnKey() + 1;
 
                             }
@@ -167,6 +162,7 @@ public class Main {
             }
 
         }
+        scanner.close();
     }
 
 }

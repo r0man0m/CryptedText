@@ -1,6 +1,5 @@
-package ProjecPackage;
+package ProjectPackage;
 
-import java.awt.*;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
