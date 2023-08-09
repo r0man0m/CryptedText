@@ -14,8 +14,7 @@ public class Main {
     static Encryption object = new Encryption();
 
     public static void main(String[] args)throws IOException{
-       // Encryption object = new Encryption();
-        System.out.println("Please, set the alphabet");
+        System.out.println("Please, set the alphabet\n");
         object.setAlphabet();
         int choice = 1;
         int start = 0;
