@@ -19,6 +19,7 @@ public class Main {
         Path pathDict = Path.of("src/ProjectPackage/dictionary.txt");
         Path keyPath = Path.of("src/key.txt");
 
+
         while ( choice != 0) {
             System.out.println();
             System.out.println("Select the program operation mode:");
@@ -73,6 +74,8 @@ public class Main {
                 System.out.println("Enter key");
                 int decryptionkey = scanner.nextInt();
                 object = new Encryption(decryptionkey);
+                System.out.println("Please set the alphabet");
+                object.setAlphabet();
                 System.out.println("Encryption text");
                 System.out.println();
                 encryptionText = object.encryptionMethod(Files.readString(textPath));
@@ -107,7 +110,9 @@ public class Main {
                     Path path1 = Path.of(StringPathEncrypt);
                     int key3 = Integer.parseInt(Files.readString(keyPath));
                     System.out.println();
-                    object = new Encryption(key3);
+                     object = new Encryption(key3);
+                    System.out.println("Please, set the alphabet");
+                     object.setAlphabet();
                     System.out.println(object.decryptionMethod(Files.readString(path1)));
                 } else {
                     System.out.println("Encrypted file is empty");

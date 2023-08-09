@@ -1,18 +1,38 @@
 package ProjectPackage;
 
-public class Encryption {
+import java.util.Scanner;
+
+public class Encryption extends AbstractCryptClass {
     private final int key;
+    private String firstSmallLetter;
+    private  String lastSmallLetter;
+    private  String firstBigLetter;
+    private  String lastBigLetter;
+    private int size;
     public Encryption(int key) {
         this.key = key;
+    }
+    public void setAlphabet() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter first small letter");
+        firstSmallLetter = scanner.nextLine();
+        System.out.println("Enter last small letter");
+        lastSmallLetter = scanner.nextLine();
+        System.out.println("Enter first big letter");
+        firstBigLetter = scanner.nextLine();
+        System.out.println("Enter last big letter");
+        lastBigLetter = scanner.nextLine();
+        System.out.println("Enter size of alphabet");
+        size = scanner.nextInt();
     }
     public String encryptionMethod(String text) {
         char[]word = text.toCharArray();
         for (int i = 0; i < word.length; i++) {
-            if(word[i] >= 1040 && word[i] <= 1071) {
-                word[i] = (char) (module((word[i] - 1040 + key), 32) + 1040); // Big letter
+            if(word[i] >= (int)firstBigLetter.charAt(0) && word[i] <= (int)lastBigLetter.charAt(0)) {
+                word[i] = (char) (module((word[i] - (int)firstBigLetter.charAt(0) + key), size ) + (int)firstBigLetter.charAt(0)); // Big letter
             }
-            else if(word[i] >= 1072 && word[i] <= 1103) {
-                word[i] = (char) (module((word[i] - 1072 + key), 32) + 1072); // Small letter
+            else if(word[i] >= (int)firstSmallLetter.charAt(0) && word[i] <= (int)lastSmallLetter.charAt(0)) {
+                word[i] = (char) (module((word[i] - (int)firstSmallLetter.charAt(0) + key), size ) + (int)firstSmallLetter.charAt(0)); // Small letter
             }
             else if(word[i] >= 32 && word[i] <= 46) {
                 word[i] = (char) (module((word[i] - 32 + key), 15) + 32); // Symbols
@@ -24,11 +44,11 @@ public class Encryption {
     public String decryptionMethod(String text) {
         char[]word = text.toCharArray();
         for (int i = 0; i < word.length; i++) {
-            if(word[i] >= 1040 && word[i] <= 1071) {
-                word[i] = (char) (module((word[i] - 1040 - key), 32) + 1040); // Big letter
+            if(word[i] >= (int)firstBigLetter.charAt(0) && word[i] <= (int)lastBigLetter.charAt(0)) {
+                word[i] = (char) (module((word[i] - (int)firstBigLetter.charAt(0) - key), size ) + (int)firstBigLetter.charAt(0)); // Big letter
             }
-            else if(word[i] >= 1072 && word[i] <= 1103) {
-                word[i] = (char) (module((word[i] - 1072 - key), 32) + 1072); // Small letter
+            else if(word[i] >= (int)firstSmallLetter.charAt(0) && word[i] <= (int)lastSmallLetter.charAt(0)) {
+                word[i] = (char) (module((word[i] - (int)firstSmallLetter.charAt(0) - key), size ) + (int)firstSmallLetter.charAt(0)); // Small letter
             }
             else if(word[i] >= 32 && word[i] <= 46) {
                 word[i] = (char) (module((word[i] - 32 - key), 15) + 32); // Symbols
@@ -37,23 +57,6 @@ public class Encryption {
         }
         return new String(word);
     }
-    public static int module(int m, int d) {
-        int rez;
-        if (m < 0) {
-            m *= -1;
-            if(m % d == 0) {
-                return m % d;
-            } else {
-                rez = d - (m % d);
-                if (m == d) {
-                    return 0;
-                }
-            }
-        }
-        else {
-            rez = m % d;
-        }
-        return rez;
-    }
+
 }
 
