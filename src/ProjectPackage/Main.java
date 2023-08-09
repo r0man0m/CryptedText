@@ -16,10 +16,12 @@ public class Main {
     public static void main(String[] args)throws IOException{
         System.out.println("Please, set the alphabet\n");
         object.setAlphabet();
+        System.out.println("Enter the path to the dictionary");
+        String dictPath = scanner.nextLine();
         int choice = 1;
         int start = 0;
         Path encryptPath = Path.of("src/EncryptionText.txt");
-        Path pathDict = Path.of("src/ProjectPackage/dictionary.txt");
+        Path pathDict = Path.of(dictPath);
         Path keyPath = Path.of("src/key.txt");
 
 
