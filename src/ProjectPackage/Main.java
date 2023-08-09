@@ -31,10 +31,14 @@ public class Main {
 
             while (wrong) {
                 try {
+
                     choice = scanner.nextInt();
+
                     wrong = false;
                 } catch (InputMismatchException ex1) {
                     System.out.println("You must enter the number");
+                    scanner.next();
+
                 }
             }
             switch (choice) {
@@ -47,6 +51,7 @@ public class Main {
                 case 3: brutForce(encryptPath, pathDict, start);
                 default:
                     System.out.println("You must enter 1 or 2 or 3 for choice or 0 for exit\n");
+                    wrong = true;
             }
         }
         scanner.close();
