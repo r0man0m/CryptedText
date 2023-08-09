@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class BruteForce {
     public static int key = 0;
-    public  void force (String text,int start, int sizeKeys, int sizeAlphabet, Path path, char firstLetter) throws IOException {
+    public  void force (String text,int start, int sizeKeys, int sizeAlphabet, Path path, char firstLetter, Encryption obj) throws IOException {
         Dictionary dictionary = new Dictionary(sizeAlphabet, path, firstLetter);
         dictionary.setDictionary();
         int count;
@@ -15,7 +15,7 @@ public class BruteForce {
 
         for (int i = start; i < sizeKeys; i++) { // Get decryption text for next key
             count = 0;
-            Encryption obj = new Encryption(i);
+            obj.setKey(i);
             String[] decryptionText = obj.decryptionMethod(text).toLowerCase().split(" "); // Get split array from decryption text
             char first = firstLetter; // Set first letter
             for (int j = 0; j < sizeAlphabet; j++) {
@@ -35,8 +35,8 @@ public class BruteForce {
 
         }
         if (isFind) {
-            Encryption encryption = new Encryption(key);
-            System.out.println(encryption.decryptionMethod(text));
+            obj.setKey(key);
+            System.out.println(obj.decryptionMethod(text));
             System.out.println("Your key is " + key);
 
         }

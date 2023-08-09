@@ -3,15 +3,14 @@ package ProjectPackage;
 import java.util.Scanner;
 
 public class Encryption extends AbstractCryptClass {
-    private final int key;
+    private  int key;
     private String firstSmallLetter;
     private  String lastSmallLetter;
     private  String firstBigLetter;
     private  String lastBigLetter;
     private int size;
-    public Encryption(int key) {
-        this.key = key;
-    }
+
+
     public void setAlphabet() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter first small letter");
@@ -25,6 +24,12 @@ public class Encryption extends AbstractCryptClass {
         System.out.println("Enter size of alphabet");
         size = scanner.nextInt();
     }
+
+    @Override
+    public void setKey(int key) {
+        this.key = key;
+    }
+
     public String encryptionMethod(String text) {
         char[]word = text.toCharArray();
         for (int i = 0; i < word.length; i++) {

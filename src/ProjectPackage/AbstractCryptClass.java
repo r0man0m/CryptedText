@@ -1,6 +1,7 @@
 package ProjectPackage;
 
 public abstract class AbstractCryptClass implements CryptInterface{
+    public abstract void setKey(int key);
 
     public abstract void setAlphabet();
 

@@ -9,10 +9,14 @@ import java.util.Scanner;
 
 public class Main {
     static boolean wrong = true;
-    static Encryption object;
     static Scanner scanner = new Scanner(System.in);
     static  String encryptionText;
+    static Encryption object = new Encryption();
+
     public static void main(String[] args)throws IOException{
+       // Encryption object = new Encryption();
+        System.out.println("Please, set the alphabet");
+        object.setAlphabet();
         int choice = 1;
         int start = 0;
         Path encryptPath = Path.of("src/EncryptionText.txt");
@@ -73,9 +77,7 @@ public class Main {
                 Path textPath = Path.of(path);
                 System.out.println("Enter key");
                 int decryptionkey = scanner.nextInt();
-                object = new Encryption(decryptionkey);
-                System.out.println("Please set the alphabet");
-                object.setAlphabet();
+                object.setKey(decryptionkey);
                 System.out.println("Encryption text");
                 System.out.println();
                 encryptionText = object.encryptionMethod(Files.readString(textPath));
@@ -110,9 +112,7 @@ public class Main {
                     Path path1 = Path.of(StringPathEncrypt);
                     int key3 = Integer.parseInt(Files.readString(keyPath));
                     System.out.println();
-                     object = new Encryption(key3);
-                    System.out.println("Please, set the alphabet");
-                     object.setAlphabet();
+                     object.setKey(key3);
                     System.out.println(object.decryptionMethod(Files.readString(path1)));
                 } else {
                     System.out.println("Encrypted file is empty");
@@ -155,7 +155,7 @@ public class Main {
                 while (ok == 1) {
                     BruteForce bruteForce = new BruteForce();
                     System.out.println("Wait please...");
-                    bruteForce.force(Files.readString(path1), start, key, size, pathDict, firstLetterString.charAt(0));
+                    bruteForce.force(Files.readString(path1), start, key, size, pathDict, firstLetterString.charAt(0), object);
                     System.out.println("Everything is OK ?");
                     System.out.println("If the text is not accurate enter 1, else enter 0");
                     ok = scanner.nextInt();
