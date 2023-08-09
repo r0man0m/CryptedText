@@ -44,9 +44,9 @@ public class Main {
             switch (choice) {
                 case 0: System.out.println("Exit...");
                     break;
-                case 1: decrypt(encryptPath, keyPath);
+                case 1: encrypt(encryptPath, keyPath);
                     break;
-                case 2: encrypt(encryptPath, keyPath);
+                case 2: decrypt(encryptPath, keyPath);
                     break;
                 case 3: brutForce(encryptPath, pathDict, start);
                 default:
@@ -56,7 +56,7 @@ public class Main {
         }
         scanner.close();
     }
-    public static void decrypt(Path encryptPath, Path keyPath) throws IOException {
+    public static void encrypt(Path encryptPath, Path keyPath) throws IOException {
         if(Files.notExists(encryptPath)) {
             Files.createFile(encryptPath);
         }
@@ -88,7 +88,7 @@ public class Main {
         }
         wrong = true;
     }
-    public static void encrypt(Path encryptPath, Path keyPath) throws IOException {
+    public static void decrypt(Path encryptPath, Path keyPath) throws IOException {
         wrong = true;
         while (wrong) {
             try {
